@@ -16,6 +16,9 @@ from threading import Thread
 # ------------- минута(0—59)
 
 class Cron_Stable():
+    def run(self):
+        process = Thread(target=self.start)
+        process.start()
 
     def start(self):
         if not hasattr(self, 'tasks'):
@@ -38,7 +41,7 @@ class Cron_Stable():
         for task in self.tasks:
             if self.is_task_callable(task):
                 task_file = task.split()
-                task_file = str('../../' + task_file[-1])
+                task_file = str(task_file[-1])
                 os.system("python "+task_file)
         return
 
@@ -58,4 +61,4 @@ class Cron_Stable():
 if __name__ == "__main__":
     cron = Cron_Stable()
     cron.load_tasks()
-    cron.start()
+    cron.run()

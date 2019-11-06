@@ -1,1 +1,1 @@
-* * * * * libraries/cron_stable/cron.py
+* * * * * ../../libraries/cron_stable/cron.py
