@@ -48,10 +48,10 @@ class Cron_Stable():
     def is_task_callable(self, task):
         tmp = task.split()
 
-        if tmp[0] == '*' or ( ('/' in tmp[0]) and (self.time_now.strftime("%M") % int(tmp[0].split('/')[-1]) == 0) ) or self.time_now.strftime("%M") == int(tmp[0]): #minute
-            if tmp[1] == '*' or (('/' in tmp[1]) and (self.time_now.strftime("%H") % int(tmp[1].split('/')[-1]) == 0)) or self.time_now.strftime("%H") == int(tmp[1]): #hour
-                if tmp[2] == '*' or (('/' in tmp[2]) and (self.time_now.strftime("%d") % int(tmp[2].split('/')[-1]) == 0)) or self.time_now.strftime("%d") == int(tmp[2]): #day
-                    if tmp[3] == '*' or (('/' in tmp[3]) and (self.time_now.strftime("%m") % int(tmp[3].split('/')[-1]) == 0)) or self.time_now.strftime("%m") == int(tmp[3]): #hour
+        if tmp[0] == '*' or ( ('/' in tmp[0]) and (int(self.time_now.strftime("%M")) % int(tmp[0].split('/')[-1]) == 0) ) or int(self.time_now.strftime("%M")) == int(tmp[0]): #minute
+            if tmp[1] == '*' or (('/' in tmp[1]) and (int(self.time_now.strftime("%H")) % int(tmp[1].split('/')[-1]) == 0)) or int(self.time_now.strftime("%H")) == int(tmp[1]): #hour
+                if tmp[2] == '*' or (('/' in tmp[2]) and (int(self.time_now.strftime("%d")) % int(tmp[2].split('/')[-1]) == 0)) or int(self.time_now.strftime("%d")) == int(tmp[2]): #day
+                    if tmp[3] == '*' or (('/' in tmp[3]) and (int(self.time_now.strftime("%m")) % int(tmp[3].split('/')[-1]) == 0)) or int(self.time_now.strftime("%m")) == int(tmp[3]): #hour
                         return True
                     else: return False
                 else: return False
